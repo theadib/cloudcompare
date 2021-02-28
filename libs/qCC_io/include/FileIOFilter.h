@@ -87,6 +87,19 @@ public:
 		QWidget* parentWidget;
 		//! Session start (whether the load action is the first of a session)
 		bool sessionStart;
+        //! extended parameter key should follow "FilterClassName/FilterParameterName", for now no automatic object mapping available
+        QMap<QString, QVariant> parameter;
+
+    public:
+        //! implement case insensitiv parameter get
+        QVariant value(const QString &keyname, const QVariant &defaultvalue = QVariant()) {
+            foreach(const auto &p, parameter.keys()) {
+                if(p.compare(keyname, Qt::CaseInsensitive) == 0) {
+                    return parameter[p];
+                }
+            }
+            return defaultvalue;
+        }
 	};
 	
 	//! Generic saving parameters

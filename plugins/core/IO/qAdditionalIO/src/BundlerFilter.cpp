@@ -163,8 +163,8 @@ CC_FILE_ERROR BundlerFilter::loadFileExtended(	const QString& filename,
 	BundlerImportDlg::OrthoRectMethod orthoRectMethod = BundlerImportDlg::OPTIMIZED;
 
 	//default paths
-	QString imageListFilename = QFileInfo(f).dir().absoluteFilePath("list.txt");
-	QString altKeypointsFilename = QFileInfo(f).dir().absoluteFilePath("pmvs.ply");
+    QString imageListFilename = QFileInfo(f).dir().absoluteFilePath(parameters.value("Bundler/imageList", "list.txt").toString());
+    QString altKeypointsFilename = QFileInfo(f).dir().absoluteFilePath(parameters.value("Bundler/keypoints", "pmvs.ply").toString());
 
 	if (parameters.alwaysDisplayLoadDialog)
 	{
